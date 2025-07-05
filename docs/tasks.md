@@ -14,7 +14,7 @@ Esta lista documenta as tarefas planejadas e concluídas para o projeto `cache-w
 
 ## A Fazer (Backlog)
 
-- [ ] **#T8:** Adicionar testes de carga (ex: com Gatling ou JMeter) para gerar um relatório de performance comparativo.
+- [x] **#T8:** Adicionar testes de carga (ex: com Gatling ou JMeter) para gerar um relatório de performance comparativo.
 - [ ] **#T9:** Documentar as estratégias de chave de cache (`KeyGenerator`) para cenários complexos.
 - [ ] **#T10:** Adicionar um endpoint para limpar todos os caches (`DELETE /cache/clear-all`).
 - [ ] **#T11:** Implementar cache condicional com a anotação `@Cacheable(condition = "...")`.
