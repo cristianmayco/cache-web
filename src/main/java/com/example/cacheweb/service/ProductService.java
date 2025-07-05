@@ -28,6 +28,11 @@ public class ProductService {
         return repository.findById(id);
     }
 
+    @Cacheable(value = "products", key = "#id", condition = "#id > 1000")
+    public Optional<Product> findByIdConditional(Long id) {
+        return repository.findById(id);
+    }
+
     @Cacheable(value = "productsPage", key = "'page_' + #pageable.pageNumber + '_' + #pageable.pageSize")
     public Page<Product> findPagedCached(Pageable pageable) {
         return repository.findAll(pageable);

@@ -33,6 +33,13 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/condicional/{id}")
+    public ResponseEntity<Product> findConditional(@PathVariable Long id) {
+        return service.findByIdConditional(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/com-cache")
     public Page<Product> findPagedCached(Pageable pageable) {
         return service.findPagedCached(pageable);

@@ -35,4 +35,11 @@ class ProductServiceTest {
         var page = service.findPagedCached(org.springframework.data.domain.PageRequest.of(0, 10));
         assertThat(page.getContent().size()).isGreaterThanOrEqualTo(1);
     }
+
+    @Test
+    void findByIdConditionalReturnsProduct() {
+        Product p = repository.save(new Product("Teste", BigDecimal.ONE));
+        var result = service.findByIdConditional(p.getId());
+        assertThat(result).isPresent();
+    }
 }
