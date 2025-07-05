@@ -21,8 +21,10 @@ O projeto é totalmente containerizado usando Docker. O `docker-compose.yml` orq
 - **API REST:** Endpoints para consultar dados de uma entidade principal.
 - **Comparativo de Performance:** Existem endpoints equivalentes com e sem cache para permitir uma comparação direta do tempo de resposta.
 - **População de Dados:** Um script automatizado que popula a tabela principal com 250.000 registros de exemplo na inicialização da aplicação.
-- **Estratégias de Cache:** Demonstração do uso de anotações como `@Cacheable`, `@CacheEvict` e `@CachePut`.
+- **Estratégias de Cache:** Demonstração do uso de anotações como `@Cacheable`, `@CacheEvict` e `@CachePut`. Consulte `docs/key_generator.md` para exemplos avançados de `KeyGenerator`.
 - **Consulta Paginada com Cache:** Endpoint `GET /produtos/com-cache` aceita parâmetros de paginação e armazena as páginas em cache.
+- **Limpeza de Cache:** Endpoint `DELETE /cache/clear-all` permite esvaziar todos os caches.
+- **Cache Condicional:** Uso de `@Cacheable(condition = "...")` para cenários onde o cache só deve ser ativado sob determinadas condições.
 - **Testes Abrangentes:** O projeto incluirá testes de unidade e integração para validar o comportamento do cache (ex: hits, misses, evictions) e garantir a corretude da lógica de negócio.
 
 ## 4. Como Executar o Projeto
