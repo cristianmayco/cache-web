@@ -2,6 +2,8 @@ package com.example.cacheweb.controller;
 
 import com.example.cacheweb.model.Product;
 import com.example.cacheweb.service.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +31,11 @@ public class ProductController {
         return service.findByIdCached(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/com-cache")
+    public Page<Product> findPagedCached(Pageable pageable) {
+        return service.findPagedCached(pageable);
     }
 
     @PutMapping("/{id}")
