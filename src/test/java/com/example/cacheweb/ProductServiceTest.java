@@ -28,4 +28,11 @@ class ProductServiceTest {
         Product updated = service.updateProduct(p);
         assertThat(updated.getName()).isEqualTo("Atualizado");
     }
+
+    @Test
+    void findPagedCachedReturnsPage() {
+        repository.save(new Product("Teste", BigDecimal.ONE));
+        var page = service.findPagedCached(org.springframework.data.domain.PageRequest.of(0, 10));
+        assertThat(page.getContent().size()).isGreaterThanOrEqualTo(1);
+    }
 }

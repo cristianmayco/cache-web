@@ -22,6 +22,7 @@ O projeto é totalmente containerizado usando Docker. O `docker-compose.yml` orq
 - **Comparativo de Performance:** Existem endpoints equivalentes com e sem cache para permitir uma comparação direta do tempo de resposta.
 - **População de Dados:** Um script automatizado que popula a tabela principal com 250.000 registros de exemplo na inicialização da aplicação.
 - **Estratégias de Cache:** Demonstração do uso de anotações como `@Cacheable`, `@CacheEvict` e `@CachePut`.
+- **Consulta Paginada com Cache:** Endpoint `GET /produtos/com-cache` aceita parâmetros de paginação e armazena as páginas em cache.
 - **Testes Abrangentes:** O projeto incluirá testes de unidade e integração para validar o comportamento do cache (ex: hits, misses, evictions) e garantir a corretude da lógica de negócio.
 
 ## 4. Como Executar o Projeto

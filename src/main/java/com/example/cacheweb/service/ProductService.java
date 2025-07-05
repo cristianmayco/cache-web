@@ -4,6 +4,8 @@ import com.example.cacheweb.model.Product;
 import com.example.cacheweb.repository.ProductRepository;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -24,6 +26,11 @@ public class ProductService {
     @Cacheable("products")
     public Optional<Product> findByIdCached(Long id) {
         return repository.findById(id);
+    }
+
+    @Cacheable(value = "productsPage", key = "'page_' + #pageable.pageNumber + '_' + #pageable.pageSize")
+    public Page<Product> findPagedCached(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @CacheEvict(value = "products", key = "#product.id")
