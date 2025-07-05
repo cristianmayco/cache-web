@@ -32,14 +32,35 @@ A aplicação levará cerca de um minuto para iniciar completamente. Ela irá pr
 
 Com a aplicação em execução, abra o navegador e use os seguintes endereços para testar:
 
-- **Ver um produto sem cache**
-  - URL: `http://localhost:8080/produtos/sem-cache/1`
-- **Ver o mesmo produto com cache**
-  - URL: `http://localhost:8080/produtos/com-cache/1`
-- **Atualizar um produto**
-  - Envie uma requisição `PUT` para `http://localhost:8080/produtos/1` com o novo nome ou preço.
+- **Listar todos os produtos sem cache**
+  - URL: `http://localhost:8080/produtos/sem-cache`
+
+- **Listar todos os produtos com cache**
+  - URL: `http://localhost:8080/produtos/com-cache/lista`
+
+- **Ver um produto específico sem cache**
+  - URL: `http://localhost:8080/produtos/sem-cache/250090`
+
+- **Ver um produto específico com cache**
+  - URL: `http://localhost:8080/produtos/com-cache/250090`
+
+- **Ver um produto com cache condicional**
+  - URL: `http://localhost:8080/produtos/condicional/250090`
+
 - **Listar produtos paginados (com cache)**
   - URL: `http://localhost:8080/produtos/com-cache?page=0&size=20`
+
+- **Atualizar um produto**
+  - Envie uma requisição `PUT` para `http://localhost:8080/produtos/250090` com o novo nome ou preço.
+  - Exemplo de corpo da requisição:
+    ```json
+    {
+      "id": 250090,
+      "name": "Produto Atualizado",
+      "price": 29.99
+    }
+    ```
+
 - **Limpar todos os caches**
   - Envie uma requisição `DELETE` para `http://localhost:8080/cache/clear-all`
 

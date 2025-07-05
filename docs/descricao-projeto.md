@@ -30,8 +30,13 @@ O projeto segue uma arquitetura em camadas:
   - Cache simples por ID
   - Cache condicional
   - Cache de páginas de resultados
+  - Cache de lista completa de produtos
 - **Gerenciamento de Cache**: Endpoints para limpar o cache
 - **Demonstração de Performance**: Endpoints com e sem cache para comparação de performance
+- **Endpoints de Listagem**: Múltiplos endpoints para listar produtos:
+  - Listagem completa sem cache
+  - Listagem completa com cache
+  - Listagem paginada com cache
 
 ## Configuração de Ambiente
 
@@ -45,8 +50,9 @@ O projeto utiliza Docker e Docker Compose para facilitar a configuração do amb
 ## Estratégias de Cache Implementadas
 
 1. **Cache Simples**: Utilizando a anotação `@Cacheable` para armazenar resultados de consultas
-2. **Cache Condicional**: Utilizando a condição `unless` para determinar quando um resultado não deve ser armazenado em cache
-3. **Cache de Páginas**: Implementação de cache para resultados paginados
+2. **Cache Condicional**: Utilizando a condição `condition` para determinar quando um resultado deve ser armazenado em cache
+3. **Cache de Páginas**: Implementação de cache para resultados paginados com chaves dinâmicas baseadas nos parâmetros de paginação
+4. **Cache de Lista Completa**: Cache para armazenar a lista completa de produtos, otimizando consultas frequentes
 
 ## Configuração de Testes
 
@@ -60,3 +66,4 @@ A documentação do projeto está organizada na pasta `docs` e inclui:
 2. **Lista de Tarefas**: Tarefas pendentes e concluídas
 3. **Lista de Issues**: Problemas conhecidos e suas soluções
 4. **Solução de Cache**: Detalhes sobre a implementação da solução de cache
+5. **Manual do Usuário**: Guia simplificado para usuários não técnicos

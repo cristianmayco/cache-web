@@ -18,6 +18,16 @@ Este arquivo rastreia issues conhecidas, bugs e pontos de melhoria no projeto.
   - **Descrição:** O `DataInitializer` tentava inserir 250.000 registros sempre que a aplicação iniciava.
   - **Correção Implementada:** Agora o inicializador verifica se já existem registros antes de popular o banco, evitando duplicações.
 
+- **ID #5: Endpoints mencionados no manual do usuário retornando erro 404.**
+  - **Descrição:** Alguns endpoints mencionados no manual do usuário estavam retornando erro 404 (Not Found). O manual referenciava IDs de produtos inexistentes (ID 1) e faltavam endpoints para listagem completa de produtos.
+  - **Correção Implementada:**
+    1. Adicionamos dois novos endpoints para listagem de produtos:
+       - `/produtos/sem-cache` para listar todos os produtos sem cache
+       - `/produtos/com-cache/lista` para listar todos os produtos com cache
+    2. Atualizamos o manual do usuário para referenciar o ID correto do produto existente (250090)
+    3. Adicionamos o novo cache "productsList" à configuração do CacheManager
+    4. Incluimos exemplos mais detalhados no manual do usuário
+
 - **ID #4: Testes com Redis Cache falhando.**
   - **Descrição:** Os testes estavam falhando devido a problemas de serialização com o Redis cache. A classe `Product` implementa `Serializable`, mas ainda havia problemas com a conexão ao Redis durante os testes.
   - **Correção Implementada:** 

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -25,12 +26,22 @@ public class ProductController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/sem-cache")
+    public List<Product> findAllNoCache() {
+        return service.findAllNoCache();
+    }
 
     @GetMapping("/com-cache/{id}")
     public ResponseEntity<Product> findCached(@PathVariable Long id) {
         return service.findByIdCached(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @GetMapping("/com-cache/lista")
+    public List<Product> findAllCached() {
+        return service.findAllCached();
     }
 
     @GetMapping("/condicional/{id}")

@@ -17,6 +17,7 @@
 - [x] Implementar controladores REST
 - [x] Implementar inicializador de dados para popular o banco
 - [x] Implementar controlador para gerenciamento de cache
+- [x] Adicionar endpoints para listagem de produtos com e sem cache
 
 ### Correções e Melhorias
 - [x] Corrigir problema do manifesto do JAR (Main-Class)

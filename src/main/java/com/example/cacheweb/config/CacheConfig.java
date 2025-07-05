@@ -18,6 +18,6 @@ public class CacheConfig {
     @Bean
     @Primary
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("products", "productsPage", "productById");
+        return new ConcurrentMapCacheManager("products", "productsPage", "productById", "productsList");
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +18,10 @@ public class ProductService {
 
     public ProductService(ProductRepository repository) {
         this.repository = repository;
+    }
+    
+    public List<Product> findAllNoCache() {
+        return repository.findAll();
     }
 
     public Optional<Product> findByIdNoCache(Long id) {
@@ -38,6 +43,11 @@ public class ProductService {
         return repository.findAll(pageable);
     }
 
+    @Cacheable(value = "productsList")
+    public List<Product> findAllCached() {
+        return repository.findAll();
+    }
+    
     @CacheEvict(value = "products", key = "#product.id")
     public Product updateProduct(Product product) {
         return repository.save(product);

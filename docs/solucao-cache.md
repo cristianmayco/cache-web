@@ -32,7 +32,8 @@ O projeto estava enfrentando problemas com os testes que dependiam do Redis Cach
 1. **Cache em Memória**
    - Criamos uma classe `CacheConfig` que usa `ConcurrentMapCacheManager` em vez de Redis
    - Isso permite que a aplicação funcione mesmo sem uma conexão Redis disponível
-   - Configuramos todos os caches necessários: "products", "productsPage", "productById"
+   - Configuramos todos os caches necessários: "products", "productsPage", "productById", "productsList"
+   - O cache "productsList" foi adicionado para suportar a listagem completa de produtos com cache
 
 2. **Implementação de Serializable**
    - Confirmamos que a classe `Product` implementa `Serializable` e tem um `serialVersionUID`
